@@ -2,7 +2,7 @@
 ![logo](https://i.imgur.com/T37nSd9.jpg
 )  
 
-![logo](https://i.imgur.com/z68fEnM.jpg
+![logo](https://i.imgur.com/6BE9xNw.jpg
 )  
 
 Hi everyone! 👋
