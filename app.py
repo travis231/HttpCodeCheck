@@ -43,7 +43,7 @@ with st.beta_expander("🛠️ Code for boilerplate", expanded=False):
 
 with c30:
   st.header('')
-  st.image('logoCropped.png', width = 725 )
+  st.image('logo.png', width = 725 )
 
 with c34:
   st.header('')
@@ -53,34 +53,6 @@ with c34:
         '''
 
         st.code(code_text_area, language='python')
-
-
-with st.beta_expander("🛠️ - URLs", expanded=False):
-	    st.write("""
-
--   https://httpbin.org/status/101
--   https://httpbin.org/status/200
--   https://httpbin.org/status/301
--   https://httpbin.org/status/302
--   https://httpbin.org/status/404
--   https://httpbin.org/status/500
--   https://www.ranksense.com/
--   https://www.searchengineland.com/
--   https://searchengineland.com/
--   https://www.tatielou.co.uk/
--   https://www.google.com/
--   https://www.charlywargnier.com/
--   https://www.searchenginejournal.com/
--   https://twitter.com/psuraj28/status/1322964872989044736
--   https://github.com/patil-suraj/Notebooks/blob/master/onnx_t5.ipynb
--   https://discuss.huggingface.co/t/speeding-up-t5-inference/1841
--   https://twitter.com/hamletbatista/status/1323287958657662976
--   https://medium.com/microsoftazure/faster-and-smaller-quantized-nlp-with-hugging-face-and-onnx-runtime-ec5525473bb7
--   https://arxiv.org/abs/2010.13002
--   https://twitter.com/DataChaz/status/1323274129974403074
-   	    """)
-
-
 
 options = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:39.0) Gecko/20100101 Firefox/39.0"
 
@@ -97,7 +69,7 @@ with c30:
 
     MAX_LINES = 20
 
-    text = st.text_area("one URL per line - Max 20", height=300)
+    text = st.text_area("One URL per line (max 20)", height=300)
     lines = text.split("\n")  # A list of lines
 
     if not text:
@@ -162,13 +134,13 @@ def _extract_status(row):
     }
 
 @st.cache(suppress_st_warning=True)
-def get_URL_Statuses_efficiently_with_pandas(urls):
+def fetching_URL_statuses(urls):
   df = pd.DataFrame({"url": urls})
   df["no_redirects_response"] = df.url.apply(lambda url: requests.get(url, allow_redirects=False, headers=Dict))
   df["redirects_response"] = df.url.apply(lambda url: requests.get(url, headers=Dict))
   return {k: _extract_status(v) for k,v in df.set_index("url").to_dict("index").items()}
 
-dict1 = get_URL_Statuses_efficiently_with_pandas(data.url.tolist()[:100])
+dict1 = fetching_URL_statuses(data.url.tolist()[:100])
 dfFromDict = pd.DataFrame.from_dict(dict1, orient='index')
 dfFromDict.reset_index(inplace=True)
 dfFromDict = dfFromDict.rename(columns={'index': 'url'})
@@ -193,13 +165,13 @@ def _extract_status(row):
     }
 
 @st.cache(suppress_st_warning=True)
-def get_URL_Statuses_efficiently_with_pandas(urls):
+def fetching_URL_statuses(urls):
   df = pd.DataFrame({"url": urls})
   df["no_redirects_response"] = df.url.apply(lambda url: requests.get(url, allow_redirects=False, headers=Dict))
   df["redirects_response"] = df.url.apply(lambda url: requests.get(url, headers=Dict))
   return {k: _extract_status(v) for k,v in df.set_index("url").to_dict("index").items()}
 
-dict1 = get_URL_Statuses_efficiently_with_pandas(data.url.tolist()[:100])
+dict1 = fetching_URL_statuses(data.url.tolist()[:100])
 dfFromDict = pd.DataFrame.from_dict(dict1, orient='index')
 dfFromDict.reset_index(inplace=True)
 dfFromDict = dfFromDict.rename(columns={'index': 'url'})
@@ -250,7 +222,7 @@ try:
     b64 = base64.b64encode(csv.encode()).decode()
     st.markdown('## **▼ List view**')
     st.subheader("")
-    href = f'<a href="data:file/csv;base64,{b64}" download="filtered_table.csv">** - Download link 🎁 **</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download link 🎁 **</a>'
     st.markdown(href, unsafe_allow_html=True)
 
 except NameError:
@@ -499,7 +471,7 @@ with c31:
     b64 = base64.b64encode(csv.encode()).decode()
     st.markdown('## **▼ List view**')
     st.subheader("")
-    href = f'<a href="data:file/csv;base64,{b64}" download="filtered_table.csv">** - Download link 🎁 **</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download link 🎁 **</a>'
     st.markdown(href, unsafe_allow_html=True)
 
 except NameError:
