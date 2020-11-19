@@ -1,7 +1,10 @@
   
-![Drag Racing](https://i.imgur.com/T37nSd9.jpg
+![logo](https://i.imgur.com/T37nSd9.jpg
 )  
-  
+
+![logo](https://i.imgur.com/z68fEnM.jpg
+)  
+
 Hi everyone! 👋
 
 This app was created by [DataChaz](https://twitter.com/DataChaz) for [Ranksense](https://www.ranksense.com/) as part of the RSTwittorial series.
