@@ -1,13 +1,12 @@
+Hi everyone! 👋
+
+This app was created by [DataChaz](https://twitter.com/DataChaz) for [Ranksense](https://www.ranksense.com/) as part of the RSTwittorial series.
   
 ![logo](https://i.imgur.com/T37nSd9.jpg
 )  
 
 ![logo](https://i.imgur.com/6BE9xNw.jpg
 )  
-
-Hi everyone! 👋
-
-This app was created by [DataChaz](https://twitter.com/DataChaz) for [Ranksense](https://www.ranksense.com/) as part of the RSTwittorial series.
 
 It is built in pure Python via the mighty [Streamlit](https://www.streamlit.io/) framework and helps you check [status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) and redirect chains in bulk!
 
