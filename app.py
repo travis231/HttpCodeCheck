@@ -353,7 +353,7 @@ with c3:
     with st.beta_expander("🛠️ Code for chart", expanded=False):
         
       st.table(dfPivotFiltered)
-              st.header('')
+        st.header('')
         code_text_table = '''pie_options = {
     "tooltip": {
         "trigger": 'item',
