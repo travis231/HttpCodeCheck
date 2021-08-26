@@ -1,7 +1,7 @@
 ##pip install --upgrade pandas==1.2.4
 import streamlit as st
 from streamlit_echarts import st_echarts
-from pandas import pandas=1.2.4 as pd
+import pandas as pd
 import requests
 import base64
 import ast #convert string to dictionary
