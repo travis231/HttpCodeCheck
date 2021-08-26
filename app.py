@@ -438,7 +438,8 @@ dfFromDict2.reset_index(inplace=True)
 
 dfFromDict2 = dfFromDict2[["url", "code", "code_class", "redirects", "last_url_in_chain", "last_code"]]
 dfFromDict2 = dfFromDict2.style.applymap(colors, subset=['code', "last_code"])
-st.table(dfFromDict2)
+
+st.table(df.dfFromDict2)
 
 c30, c31 = st.beta_columns(2)
 
