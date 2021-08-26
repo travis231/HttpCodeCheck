@@ -1,4 +1,3 @@
-##pip install --upgrade pandas==1.2.4
 import streamlit as st
 from streamlit_echarts import st_echarts
 import pandas as pd
@@ -41,16 +40,13 @@ _max_width_()
 with st.beta_expander("🛠️ Code for boilerplate", expanded=False):
 
         code_text_area = '''c30, c31, c32, c33, c34 = st.beta_columns(5)
-
 with c30:
   st.header('')
   st.image('logo.png', width = 725 )
-
 with c34:
   st.header('')
   st.header('')
   st.markdown('###### &nbsp &nbsp &nbsp &nbsp &nbsp Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://twitter.com/DataChaz)')
-
         '''
 
         st.code(code_text_area, language='python')
@@ -99,18 +95,14 @@ with c70:
     with st.beta_expander("🛠️ Code for text_area", expanded=False):
 
         code_text_area = '''MAX_LINES = 20
-
         text = st.text_area("URLs, one per line.", height=200)
         lines = text.split("\n")
-
         if len(lines) > MAX_LINES:
             st.warning(f"Maximum number of lines reached. Only the first {MAX_LINES} will be processed.")
             lines = lines[:MAX_LINES]
-
         for line in lines:
             # Process line here
             data = pd.DataFrame({'url':lines})
-
         #drop_duplicates
         data = data.drop_duplicates(subset ="url")
         #contains https or http
@@ -134,21 +126,17 @@ def _extract_status(row):
     "last_code": row["redirects_response"].status_code,
     "last_url_in_chain": row["redirects_response"].url
     }
-
 @st.cache(suppress_st_warning=True)
 def fetching_URL_statuses(urls):
   df = pd.DataFrame({"url": urls})
   df["no_redirects_response"] = df.url.apply(lambda url: requests.get(url, allow_redirects=False, headers=Dict))
   df["redirects_response"] = df.url.apply(lambda url: requests.get(url, headers=Dict))
   return {k: _extract_status(v) for k,v in df.set_index("url").to_dict("index").items()}
-
 dict1 = fetching_URL_statuses(data.url.tolist()[:100])
 dfFromDict = pd.DataFrame.from_dict(dict1, orient='index')
 dfFromDict.reset_index(inplace=True)
 dfFromDict = dfFromDict.rename(columns={'index': 'url'})
 dfFromDict = dfFromDict.astype(str)
-
-
         '''
 
         st.code(code_text_area, language='python')
@@ -352,15 +340,14 @@ with c3:
 
     with st.beta_expander("🛠️ Code for chart", expanded=False):
         
-      st.table(dfPivotFiltered)
-                st.header('')
+    #st.table(dfPivotFiltered)
+            #st.header('')
         code_text_table = '''pie_options = {
     "tooltip": {
         "trigger": 'item',
         "formatter": '{a} <br/>{b}: {c} ({d}%)'
     },
     "color":['#57904b','#fb8649','#ae1029', '#0065c2'],
-
     "legend": {
         "orient": 'vertical',
         #"orient": 'vertical',
@@ -399,11 +386,8 @@ with c3:
         }
     ]
  };
-
-
  st.markdown('## **▼ Chart Overview **')
  st_echarts(options=pie_options)
-
             '''
 
         st.code(code_text_table, language='python')
@@ -413,19 +397,15 @@ with c4:
 
     with st.beta_expander("🛠️ Code for pivot table", expanded=False):
         
-    st.table(dfPivotFiltered)
-            st.header('')
+    #st.table(dfPivotFiltered)
+            #st.header('')
         code_text_table = '''
 dfFromDict2["code"] = pd.to_numeric(dfFromDict2["code"])
 dfFromDict2["last_code"] = pd.to_numeric(dfFromDict2["last_code"])
 dfFromDict2.reset_index(inplace=True)
-
 dfFromDict2 = dfFromDict2[["url", "code", "code_class", "redirects", "last_url_in_chain", "last_code"]]
 dfFromDict2 = dfFromDict2.style.applymap(colors, subset=['code', "last_code"])
-
 st.table(dfFromDict2)
-
-
             '''
 
         st.code(code_text_table, language='python')
@@ -475,11 +455,8 @@ with c31:
     st.subheader("")
     href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download link 🎁 **</a>'
     st.markdown(href, unsafe_allow_html=True)
-
 except NameError:
     print ('wait')
-
-
             '''
 
             st.code(code_text_table, language='python')
@@ -493,7 +470,6 @@ with c30:
             
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def load_data(nrows):
-
     dfFromDict["code_class"] = pd.np.where(
         dfFromDict.code.str.contains("^1.*"),
         "(1XX)",
@@ -511,11 +487,8 @@ def load_data(nrows):
             ),
         ),
 )
-
     return dfFromDict
-
 dfFromDict2 = load_data(100)
-
 def colors(value):
   if value == 200:
     color = 'green'
@@ -533,21 +506,14 @@ def colors(value):
     color = 'red'
   else:
     color = 'black'
-
   return 'color: %s' % color
-
 dfFromDict2["code"] = pd.to_numeric(dfFromDict2["code"])
 dfFromDict2["last_code"] = pd.to_numeric(dfFromDict2["last_code"])
 dfFromDict2.reset_index(inplace=True)
-
 dfFromDict2 = dfFromDict2[["url", "code", "code_class", "redirects", "last_url_in_chain", "last_code"]]
 dfFromDict2 = dfFromDict2.style.applymap(colors, subset=['code', "last_code"])
-
 st.table(dfFromDict2)
-
             
             '''
 
             st.code(code_text_table, language='python')
-
-    
