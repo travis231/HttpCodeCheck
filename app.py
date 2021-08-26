@@ -352,8 +352,8 @@ with c3:
 
     with st.beta_expander("🛠️ Code for chart", expanded=False):
         
-    #st.table(dfPivotFiltered)
-            #st.header('')
+    st.table(dfPivotFiltered)
+            st.header('')
         code_text_table = '''pie_options = {
     "tooltip": {
         "trigger": 'item',
@@ -413,8 +413,8 @@ with c4:
 
     with st.beta_expander("🛠️ Code for pivot table", expanded=False):
         
-    #st.table(dfPivotFiltered)
-            #st.header('')
+    st.table(dfPivotFiltered)
+            st.header('')
         code_text_table = '''
 dfFromDict2["code"] = pd.to_numeric(dfFromDict2["code"])
 dfFromDict2["last_code"] = pd.to_numeric(dfFromDict2["last_code"])
